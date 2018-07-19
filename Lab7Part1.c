@@ -277,7 +277,7 @@ void play(){
                 gameOn = false;
                 printf("Invalid move.\n");
             }
-            else if(strcmp(humanMove, "!!") != 0){
+            else if(strcmp(humanMove, "!!") != 0 && (countOfTiles('U'))){
                 updateBoard(humanColor, humanMove, whiteMoves, blackMoves);
                 printBoard();
                 updateLegalMoves(whiteMoves, blackMoves);
@@ -289,7 +289,7 @@ void play(){
            && !positionInBounds((blackMoves[0][0] - 'a'), (blackMoves[0][1] - 'a'))) gameOn = false;
         if((turnState[1] == 1) && gameOn){ //computer's move
             findAiMove(aiMove, aiColor, whiteMoves, blackMoves, turnState);
-            if(turnState[1] != -1){
+            if(turnState[1] != -1 && (countOfTiles('U'))){
                 printf("Computer places %c at %s.\n", aiColor, aiMove);
                 updateBoard(aiColor, aiMove, whiteMoves, blackMoves);
                 updateLegalMoves(whiteMoves, blackMoves);
